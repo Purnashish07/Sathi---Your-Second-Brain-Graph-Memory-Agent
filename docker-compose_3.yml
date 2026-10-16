@@ -1,0 +1,17 @@
+
+version: '3.8'
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    ports:
+      - "6379:6379"
+      - "3000:3000"
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - FALKOR_HOST=falkordb
+      - FALKOR_PORT=6379
+    depends_on:
+      - falkordb

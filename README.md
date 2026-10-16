@@ -1,4 +1,4 @@
-#Sathi - Graph Memory Agent 🧠🕸️
+##Sathi - Graph Memory Agent 🧠🕸️##
 
 Track 02: Memory & Coordination + Track 01: Explainable & Interactive | FalkorDB Hackathon
 

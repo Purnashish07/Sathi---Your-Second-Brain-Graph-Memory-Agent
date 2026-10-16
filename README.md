@@ -1,4 +1,4 @@
-Sathi - Graph Memory Agent 🧠🕸️
+# **Sathi - Graph Memory Agent 🧠🕸️**
 
 Track 02: Memory & Coordination + Track 01: Explainable & Interactive | FalkorDB Hackathon
 
@@ -17,7 +17,8 @@ Open http://localhost:5173 → Seed Demo Data → Ask "mera auth wala bug yaad h
 With Docker:
 
 docker run -p 6379:6379 -p 3000:3000 falkordb/falkordb:edge
-# then same backend/frontend commands
+
+# **Then same backend/frontend commands**
 
 Graph Model
 

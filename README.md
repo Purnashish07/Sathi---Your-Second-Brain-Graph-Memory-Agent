@@ -6,7 +6,7 @@ Your Second Brain that never forgets. A multi-agent system where 3 agents share 
 
 Video: https://youtu.be/W8bz6LKrlqQ | Run: Works without Docker (MOCK fallback)
 
-Quick Run
+# **Quick Run**
 
 Without Docker (2 commands - for judges):
 
@@ -17,16 +17,15 @@ Open http://localhost:5173 → Seed Demo Data → Ask "mera auth wala bug yaad h
 With Docker:
 
 docker run -p 6379:6379 -p 3000:3000 falkordb/falkordb:edge
+Then same backend/frontend commands
 
-# **Then same backend/frontend commands**
-
-Graph Model
+# **Graph Model**
 
 (User {id})-[:FACED {timestamp}]->(Bug {desc, tags, created})-[:IN_FILE]->(File {name})-[:FIXED_BY]->(Solution {text})
 (Bug)-[:BELONGS_TO]->(Concept {name})
 (Commit)-[:FIXES]->(Bug) [Company Brain]
 
-Cypher Queries (Core Logic)
+# **Cypher Queries (Core Logic)**
 
 // 1. Recall (multi-hop)
 MATCH (u:User {id:$uid})-[:FACED]->(b:Bug)-[:FIXED_BY]->(s:Solution),(b)-[:IN_FILE]->(f:File)
@@ -42,23 +41,24 @@ MATCH (c:Commit)-[:FIXES]->(b:Bug)-[:IN_FILE]->(f:File) RETURN f.name, count(b) 
 
 Algorithms: Degree Centrality, Concept co-occurrence, Temporal sorting
 
-Demo Flow (Video 0:00-0:30)
+# **Demo Flow (Video 0:00-0:30)**
 
 0s Seed → 22 nodes, 33 edges | 3s Ask "mera auth wala bug yaad hai?" → JWT fix + Cypher + Path (User)-[:FACED]->(Bug)-[:IN_FILE]->(auth.js) | 9s Graph Canvas → Live force graph Red=Bug Yellow=File Green=Solution | 17s Detective → auth.js 33.3% risk, multi-hop, concept patterns
 
-Tracks
+# **Tracks**
 
 Track 02 Primary: Follow connections Bug->File->Solution, Remember across sessions (dev123 persists), Share state (Writer/Reader/Detective same graph SathiMemory), Company Brain (/github/import + multi-tenant)
+
 Track 01 Bonus: Explainable panel shows Cypher + path + timeline
 
-API
+# **API**
 
 POST /ask {user_id, query} | POST /remember {user_id,bug,file,solution} | GET /graph/{user_id} | GET /analyze/{user_id} | POST /github/import
 
-Why FalkorDB?
+# **Why FalkorDB?**
 
 Vector = similarity only. FalkorDB = connections: auth bug → auth.js → payment bug via same middleware. One Cypher hop. Rust+Redis = fast agent tool.
 
-Progress
+# **Progress**
 
 Backend[x] Frontend 3 tabs[x] Graph Model[x] 5 Cypher[x] Video[x] MOCK fallback[x] | Live Deploy in progress (local 100% works)
